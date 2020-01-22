@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using GameSystemServices;
 
 namespace MeteorDodgerssssss
 {
@@ -39,12 +32,12 @@ namespace MeteorDodgerssssss
             foreach (Control c in this.Controls)
             {
                 if (c is Button)
-                    c.BackColor = Color.White;
+                    c.BackColor = Color.DarkRed;
             }
 
             //change the current button to the active colour
             Button btn = (Button)sender;
-            btn.BackColor = Color.Gold;
+            btn.BackColor = Color.Orange;
         }
 
         

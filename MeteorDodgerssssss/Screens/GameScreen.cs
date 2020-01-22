@@ -1,13 +1,15 @@
-﻿using System;
+﻿/// Created by Declan Feore, James Koch, and Eason Wu
+/// January 2020
+/// 
+/// This program is a simple game where you have to dodge oncoming meteors by using the left and right arrows.
+/// As the game progresses it get increasingly fast.
+/// Boosts also fall to give the player an extra health.
+
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using GameSystemServices;
 using System.Media;
 
 namespace MeteorDodgerssssss
@@ -17,22 +19,20 @@ namespace MeteorDodgerssssss
         //player button control keys 
         Boolean leftArrowDown, rightArrowDown;
 
-        //TODO create your global game variables here
-
-        int playerX, playerY, playerSize, playerSpeed, playerHealth, playerScore, playerLevel; //player variables
+        int playerX, playerY, playerSize, playerSpeed, playerHealth, playerScore; //player variables
         int meteorSize, meteorSpeed, meteorDraw; //meteor variables
         int boostSize, boostSpeed, boostDraw; //boost variables
-        List<int> meteorsX = new List<int>();
-        List<int> meteorsY = new List<int>();
-        List<int> boostsX = new List<int>();
-        List<int> boostsY = new List<int>();
-        SolidBrush playerBrush = new SolidBrush(Color.Blue); //player brush
+        List<int> meteorsX = new List<int>(); //list of meteor x locations
+        List<int> meteorsY = new List<int>(); //list of meteor y locations
+        List<int> boostsX = new List<int>(); //list of boost x locations
+        List<int> boostsY = new List<int>(); //list of boost y locations
+        SolidBrush playerBrush = new SolidBrush(Color.LightBlue); //player brush
         SolidBrush meteorBrush = new SolidBrush(Color.DarkRed); //meteor brush
         SolidBrush boostBrush = new SolidBrush(Color.Yellow); //boost brush
         Random randGen = new Random(); //random generator for all random values 
-        SoundPlayer boostPlayer = new SoundPlayer(Properties.Resources.Boost);
-        SoundPlayer hitPlayer = new SoundPlayer(Properties.Resources.Hit);
-        SoundPlayer deathPlayer = new SoundPlayer(Properties.Resources.Death);
+        SoundPlayer boostPlayer = new SoundPlayer(Properties.Resources.Boost); //sound that plays when player collides with a boost
+        SoundPlayer hitPlayer = new SoundPlayer(Properties.Resources.Hit); //sound that plays when player collides with a meteor
+        SoundPlayer deathPlayer = new SoundPlayer(Properties.Resources.Death); //sound that plays when player dies
 
         public GameScreen()
         {
@@ -48,7 +48,8 @@ namespace MeteorDodgerssssss
             playerY = this.Height - 30;
             playerSize = 30;
             playerSpeed = 5;
-            playerHealth = 100;
+            playerHealth = 3;
+            playerScore = 1;
 
             //Initial meteor values 
             meteorsX.Add(randGen.Next(1, this.Width - meteorSize));
@@ -83,7 +84,6 @@ namespace MeteorDodgerssssss
 
                 if (result == DialogResult.Cancel)
                 {
-                    gameTimer.Enabled = true;
                 }
                 else if (result == DialogResult.Abort)
                 {
@@ -143,11 +143,10 @@ namespace MeteorDodgerssssss
                 meteorsY[i] = meteorsY[i] + meteorSpeed;
             }
 
-            //make meteors faster if player score surpases a multiple of 100
-            if (playerScore / 100 == 0)
+            //make meteors faster if player score surpases a multiple of 50
+            if (playerScore % 50 == 0)
             {
                 meteorSpeed++;
-                break;
             }
 
             //add new health boost x and y to health boost lists
@@ -175,14 +174,14 @@ namespace MeteorDodgerssssss
                 if (playerRec.IntersectsWith(meteorRec))
                 {
                     hitPlayer.Play();
-                    playerBrush = new SolidBrush(Color.Red);
                     playerHealth = playerHealth - 1;
                     healthLabel.Text = "Health: " + playerHealth;
+                    meteorsX.RemoveAt(i);
+                    meteorsY.RemoveAt(i);
                     break;
                 }
                 else
                 {
-                    playerBrush = new SolidBrush(Color.Blue);
                     playerHealth = playerHealth * 1;
                 }
             }
@@ -195,41 +194,48 @@ namespace MeteorDodgerssssss
                 if (playerRec.IntersectsWith(boostRec))
                 {
                     boostPlayer.Play();
-                    playerBrush = new SolidBrush(Color.Yellow);
                     playerHealth = playerHealth + 1;
                     healthLabel.Text = "Health: " + playerHealth;
+                    boostsX.RemoveAt(0);
+                    boostsY.RemoveAt(0);
                     break;
                 }
                 else
                 {
-                    playerBrush = new SolidBrush(Color.Blue);
                     playerHealth = playerHealth * 1;
                 }
             }
 
             //remove meteor from list if it goes off the screen
-            if (meteorsY[0] > this.Height)
+            if (meteorsY.Count() > 0)
             {
-                meteorsX.RemoveAt(0);
-                meteorsY.RemoveAt(0);
+                if (meteorsY[0] > this.Height)
+                {
+                    meteorsX.RemoveAt(0);
+                    meteorsY.RemoveAt(0);
 
-                //player gets a point because they have not been hit by that meteor
-                playerScore = playerScore + 1;
-                scoreLabel.Text = "Score: " + playerScore;
+                    //player gets a point because they have not been hit by that meteor
+                    playerScore = playerScore + 1;
+                    scoreLabel.Text = "Score: " + playerScore;
+                }
+            }               
+
+            //remove boost from list if it goes off the screen
+            if (boostsY.Count() > 0)
+            {
+                if (boostsY[0] > this.Height)
+                {
+                    boostsX.RemoveAt(0);
+                    boostsY.RemoveAt(0);
+                }
             }
-
-            /*remove boost from list if it goes off the screen
-            if (boostsY[0] > this.Height && boostsY[1] > this.Height)
-            {
-                boostsX.RemoveAt(0);
-                boostsY.RemoveAt(0);
-            }*/
 
             //stop the game if player health is zero
             if (playerHealth == 0)
             {
                 deathPlayer.Play();
                 gameTimer.Enabled = false;
+                DeathOptions(); 
             }            
 
             //calls the GameScreen_Paint method to draw the screen.
@@ -252,6 +258,41 @@ namespace MeteorDodgerssssss
             {
                 e.Graphics.FillEllipse(meteorBrush, meteorsX[i], meteorsY[i], meteorSize, meteorSize);
             }
+        }
+
+        public void DeathOptions()
+        {
+            //shows the two options the player has
+            retryButton.Enabled = true;
+            retryButton.Visible = true;
+            quitButton.Enabled = true;
+            quitButton.Visible = true;
+        }
+
+        public void RetryButton_Click(object sender, EventArgs e)
+        {
+            //restart game 
+            MainForm.ChangeScreen(this, "GameScreen");
+        }
+
+        public void QuitButton_Click(object sender, EventArgs e)
+        {
+            //go back to the starting menu
+            MainForm.ChangeScreen(this, "MenuScreen");
+        }
+
+        private void button_Enter(object sender, EventArgs e)
+        {
+            //start by changing all the buttons to the default colour
+            foreach (Control c in this.Controls)
+            {
+                if (c is Button)
+                    c.BackColor = Color.DarkRed;
+            }
+
+            //change the current button to the active colour
+            Button btn = (Button)sender;
+            btn.BackColor = Color.Orange;
         }
     }
 

@@ -36,11 +36,12 @@
             // 
             // exitButton
             // 
-            this.exitButton.BackColor = System.Drawing.Color.White;
+            this.exitButton.BackColor = System.Drawing.Color.DarkRed;
             this.exitButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.exitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitButton.Font = new System.Drawing.Font("Comic Sans MS", 11.25F);
+            this.exitButton.ForeColor = System.Drawing.Color.Yellow;
             this.exitButton.Location = new System.Drawing.Point(150, 320);
             this.exitButton.Margin = new System.Windows.Forms.Padding(4);
             this.exitButton.Name = "exitButton";
@@ -53,10 +54,11 @@
             // 
             // playButton
             // 
-            this.playButton.BackColor = System.Drawing.Color.White;
+            this.playButton.BackColor = System.Drawing.Color.DarkRed;
             this.playButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.playButton.Font = new System.Drawing.Font("Comic Sans MS", 11.25F);
+            this.playButton.ForeColor = System.Drawing.Color.Yellow;
             this.playButton.Location = new System.Drawing.Point(150, 103);
             this.playButton.Margin = new System.Windows.Forms.Padding(4);
             this.playButton.Name = "playButton";
@@ -70,11 +72,12 @@
             // 
             // howToPlayButton
             // 
-            this.howToPlayButton.BackColor = System.Drawing.Color.White;
+            this.howToPlayButton.BackColor = System.Drawing.Color.DarkRed;
             this.howToPlayButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.howToPlayButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.howToPlayButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.howToPlayButton.Font = new System.Drawing.Font("Comic Sans MS", 11.25F);
+            this.howToPlayButton.ForeColor = System.Drawing.Color.Yellow;
             this.howToPlayButton.Location = new System.Drawing.Point(150, 209);
             this.howToPlayButton.Margin = new System.Windows.Forms.Padding(4);
             this.howToPlayButton.Name = "howToPlayButton";
