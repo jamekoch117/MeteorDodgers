@@ -10,8 +10,8 @@ namespace MeteorDodgerssssss
 
             //instructions on how to play are shown
             outputLabel.Text = "How to Play Meteor Dodgers:";
-            outputLabel.Text += "\n\nClick A to move character left";
-            outputLabel.Text += "\nClick D to move character right";
+            outputLabel.Text += "\n\nClick left arrow to move character left";
+            outputLabel.Text += "\nClick right arrow to move character right";
             outputLabel.Text += "\nMove to avoid the falling meteors at all costs";
             outputLabel.Text += "\nIf you get hit by a meteor you lose a heart";
             outputLabel.Text += "\nWhen you have no hearts left you lose";
