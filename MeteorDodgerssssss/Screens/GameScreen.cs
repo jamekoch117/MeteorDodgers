@@ -47,7 +47,7 @@ namespace MeteorDodgerssssss
             playerX = this.Width / 2;
             playerY = this.Height - 30;
             playerSize = 30;
-            playerSpeed = 5;
+            playerSpeed = 10;
             playerHealth = 3;
             playerScore = 1;
 
@@ -84,6 +84,7 @@ namespace MeteorDodgerssssss
 
                 if (result == DialogResult.Cancel)
                 {
+                    gameTimer.Enabled = true;
                 }
                 else if (result == DialogResult.Abort)
                 {
