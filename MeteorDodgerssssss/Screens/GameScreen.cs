@@ -61,7 +61,7 @@ namespace MeteorDodgerssssss
             boostsX.Add(randGen.Next(1, this.Width - meteorSize));
             boostsY.Add(0);
             boostSize = 30;
-            boostSpeed = 10;
+            boostSpeed = 15;
         }
 
         public void ScoreboardValues()

@@ -79,6 +79,16 @@ namespace MeteorDodgerssssss.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap epic_computer_science {
+            get {
+                object obj = ResourceManager.GetObject("epic_computer_science", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] GameSystemServices {
@@ -94,6 +104,26 @@ namespace MeteorDodgerssssss.Properties {
         internal static System.IO.UnmanagedMemoryStream Hit {
             get {
                 return ResourceManager.GetStream("Hit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap james_icon {
+            get {
+                object obj = ResourceManager.GetObject("james icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap james_koch_icon {
+            get {
+                object obj = ResourceManager.GetObject("james_koch_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
