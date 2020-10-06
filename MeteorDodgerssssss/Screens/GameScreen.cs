@@ -1,9 +1,9 @@
-﻿/// Created by Declan Feore, James Koch, and Eason Wu
-/// January 2020
+﻿/// Created by  James Koch
+/// october 2020
 /// 
-/// This program is a simple game where you have to dodge oncoming meteors by using the left and right arrows.
-/// As the game progresses it gets increasingly fast.
-/// Boosts also fall to give the player an extra health.
+/// This program is quite simple all you have to do is avoid the falling obsticals by using thee left and right arrow.
+/// As the game progresses it gets faster.
+/// 
 
 using System;
 using System.Collections.Generic;
@@ -27,32 +27,36 @@ namespace MeteorDodgerssssss
         List<int> boostsX = new List<int>(); //list of boost x locations
         List<int> boostsY = new List<int>(); //list of boost y locations
         SolidBrush playerBrush = new SolidBrush(Color.LightBlue); //player brush
-        SolidBrush meteorBrush = new SolidBrush(Color.DarkRed); //meteor brush
+        SolidBrush jamesBrush = new SolidBrush(Color.DarkRed); //meteor brush
         SolidBrush boostBrush = new SolidBrush(Color.Yellow); //boost brush
         Random randGen = new Random(); //random generator for all random values 
         SoundPlayer boostPlayer = new SoundPlayer(Properties.Resources.Boost); //sound that plays when player collides with a boost
         SoundPlayer hitPlayer = new SoundPlayer(Properties.Resources.Hit); //sound that plays when player collides with a meteor
         SoundPlayer deathPlayer = new SoundPlayer(Properties.Resources.Death); //sound that plays when player dies
+        Image james = Properties.Resources.jamesIcon;
+        
+
 
         public GameScreen()
         {
             InitializeComponent();
             InitializeGameValues();
             ScoreboardValues();
+            
         }
 
         public void InitializeGameValues()
         {
             //Initial player values 
             playerX = this.Width / 2;
-            playerY = this.Height - 30;
+            playerY = this.Height - 55;
             playerSize = 30;
             playerSpeed = 10;
             playerHealth = 3;
             playerScore = 1;
 
             //Initial meteor values 
-            meteorsX.Add(randGen.Next(1, this.Width - meteorSize));
+            meteorsX.Add(randGen.Next(2, this.Width - meteorSize));
             meteorsY.Add(0);
             meteorSize = 30;
             meteorSpeed = 10;
@@ -96,10 +100,10 @@ namespace MeteorDodgerssssss
             switch (e.KeyCode)
             {
                 case Keys.Left:
-                    leftArrowDown = true;
+                    rightArrowDown = true;
                     break;
                 case Keys.Right:
-                    rightArrowDown = true;
+                    leftArrowDown = true;
                     break;
             }
         }
@@ -142,7 +146,14 @@ namespace MeteorDodgerssssss
             for (int i = 0; i < meteorsY.Count(); i++)
             {
                 meteorsY[i] = meteorsY[i] + meteorSpeed;
+
             }
+
+            //if(playerScore == 40)
+            //{
+            //    meteorsX.Add(randGen.Next(5, this.Width - meteorSize));
+           // }
+
 
             //make meteors faster if player score surpases a multiple of 50
             if (playerScore % 50 == 0)
@@ -246,18 +257,20 @@ namespace MeteorDodgerssssss
         public void GameScreen_Paint(object sender, PaintEventArgs e)
         {
             //draw player to screen
-            e.Graphics.FillRectangle(playerBrush, playerX, playerY, playerSize, playerSize);
+            e.Graphics.FillRectangle(jamesBrush, playerX, playerY, playerSize, playerSize);
+            e.Graphics.DrawImage(james, playerX, playerY, playerSize, playerSize);
 
             //draw boost to screen
             for (int i = 0; i < boostsX.Count; i++)
             {
-                e.Graphics.FillRectangle(boostBrush, boostsX[i], boostsY[i], boostSize, boostSize);
+                e.Graphics.FillRectangle(jamesBrush, boostsX[i], boostsY[i], boostSize, boostSize);
             }
 
             //draw meteor to screen
             for (int i = 0; i < meteorsX.Count; i++)
             {
-                e.Graphics.FillEllipse(meteorBrush, meteorsX[i], meteorsY[i], meteorSize, meteorSize);
+                e.Graphics.DrawImage(james, meteorsX[i], meteorsY[i], meteorSize, meteorSize);
+                //colorLabel.BackColor = System.Drawing.Color.White;
             }
         }
 

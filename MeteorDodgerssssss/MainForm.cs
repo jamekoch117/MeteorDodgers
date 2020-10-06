@@ -5,7 +5,7 @@ namespace MeteorDodgerssssss
 {
     public partial class MainForm : Form
     {
-        bool fullScreen = false;  // true: program runs fullscreen || false: program runs in window
+        bool fullScreen = true;  // true: program runs fullscreen || false: program runs in window
 
         public MainForm()
         {
@@ -16,17 +16,17 @@ namespace MeteorDodgerssssss
             // open the main menu for the game
             MenuScreen ms = new MenuScreen();
             this.Controls.Add(ms);
-
+            this.WindowState = FormWindowState.Maximized;
             #region open in full screen or not
             if (fullScreen)
             {
                 this.WindowState = FormWindowState.Maximized;
                 this.FormBorderStyle = FormBorderStyle.None;
 
-                int screenWidth = Screen.PrimaryScreen.WorkingArea.Width;
+                int screenWidthh = Screen.PrimaryScreen.WorkingArea.Width;
                 int screenHeight = Screen.PrimaryScreen.WorkingArea.Height;
                 // centre the new screen in the middle of the form
-                ms.Location = new Point((screenWidth - ms.Width) / 2, (screenHeight - ms.Height) / 2);
+                ms.Location = new Point((screenWidthh - ms.Width) / 2, (screenHeight - ms.Height) / 2);
             }
             else
             {
@@ -34,6 +34,8 @@ namespace MeteorDodgerssssss
                 ms.Location = new Point((this.Width - ms.Width) / 2, (this.Height - ms.Height) / 2);
             }
             #endregion
+            int screenWidth = Screen.PrimaryScreen.WorkingArea.Width;
+
         }
 
         public static void ChangeScreen(UserControl current, string next)
@@ -52,9 +54,7 @@ namespace MeteorDodgerssssss
                 case "GameScreen":
                     ns = new GameScreen();
                     break;
-                case "HowToPlayScreen":
-                    ns = new HowToPlayScreen();
-                    break;
+               
             }
 
             //centres the control on the screen

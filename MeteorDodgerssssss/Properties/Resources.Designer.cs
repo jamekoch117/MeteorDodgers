@@ -70,6 +70,16 @@ namespace MeteorDodgerssssss.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap class1 {
+            get {
+                object obj = ResourceManager.GetObject("class1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream Death {
@@ -120,9 +130,9 @@ namespace MeteorDodgerssssss.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap james_koch_icon {
+        internal static System.Drawing.Bitmap jamesIcon {
             get {
-                object obj = ResourceManager.GetObject("james_koch_icon", resourceCulture);
+                object obj = ResourceManager.GetObject("jamesIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

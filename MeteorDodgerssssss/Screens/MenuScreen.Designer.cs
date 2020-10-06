@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuScreen));
             this.exitButton = new System.Windows.Forms.Button();
             this.playButton = new System.Windows.Forms.Button();
-            this.howToPlayButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // exitButton
@@ -42,10 +41,10 @@
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitButton.Font = new System.Drawing.Font("Comic Sans MS", 11.25F);
             this.exitButton.ForeColor = System.Drawing.Color.Yellow;
-            this.exitButton.Location = new System.Drawing.Point(351, 215);
-            this.exitButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.exitButton.Location = new System.Drawing.Point(278, 215);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(2);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(106, 39);
+            this.exitButton.Size = new System.Drawing.Size(187, 39);
             this.exitButton.TabIndex = 3;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = false;
@@ -59,34 +58,16 @@
             this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.playButton.Font = new System.Drawing.Font("Comic Sans MS", 11.25F);
             this.playButton.ForeColor = System.Drawing.Color.Yellow;
-            this.playButton.Location = new System.Drawing.Point(113, 215);
-            this.playButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.playButton.Location = new System.Drawing.Point(79, 215);
+            this.playButton.Margin = new System.Windows.Forms.Padding(2);
             this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(120, 39);
+            this.playButton.Size = new System.Drawing.Size(195, 39);
             this.playButton.TabIndex = 1;
             this.playButton.Tag = "GameScreen";
             this.playButton.Text = "Play";
             this.playButton.UseVisualStyleBackColor = false;
             this.playButton.Click += new System.EventHandler(this.playButton_Click);
             this.playButton.Enter += new System.EventHandler(this.button_Enter);
-            // 
-            // howToPlayButton
-            // 
-            this.howToPlayButton.BackColor = System.Drawing.Color.DarkRed;
-            this.howToPlayButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.howToPlayButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.howToPlayButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.howToPlayButton.Font = new System.Drawing.Font("Comic Sans MS", 11.25F);
-            this.howToPlayButton.ForeColor = System.Drawing.Color.Yellow;
-            this.howToPlayButton.Location = new System.Drawing.Point(237, 215);
-            this.howToPlayButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.howToPlayButton.Name = "howToPlayButton";
-            this.howToPlayButton.Size = new System.Drawing.Size(110, 39);
-            this.howToPlayButton.TabIndex = 2;
-            this.howToPlayButton.Text = "How To Play";
-            this.howToPlayButton.UseVisualStyleBackColor = false;
-            this.howToPlayButton.Click += new System.EventHandler(this.HowToPlayButton_Click_1);
-            this.howToPlayButton.Enter += new System.EventHandler(this.button_Enter);
             // 
             // MenuScreen
             // 
@@ -95,7 +76,6 @@
             this.BackColor = System.Drawing.Color.Transparent;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Controls.Add(this.howToPlayButton);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.playButton);
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -109,6 +89,5 @@
 
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Button playButton;
-        private System.Windows.Forms.Button howToPlayButton;
     }
 }

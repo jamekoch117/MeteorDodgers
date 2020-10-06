@@ -1,4 +1,4 @@
-﻿namespace MeteorDodgerssssss
+﻿namespace MeteorDodgersssssss
 {
     partial class HowToPlayScreen
     {
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HowToPlayScreen));
             this.outputLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -49,14 +48,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Transparent;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.outputLabel);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "HowToPlayScreen";
-            this.Size = new System.Drawing.Size(469, 264);
-            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.HowToPlayScreen_PreviewKeyDown);
+            this.Size = new System.Drawing.Size(316, 210);
+            
             this.ResumeLayout(false);
             this.PerformLayout();
 
